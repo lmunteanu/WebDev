@@ -29,30 +29,12 @@
                     return this.tagName;
                 }).get().join(" ");
 
-                var parray = parentOfThis.split(" ").reverse().slice(2).join(" - ");
+                var parray = parentOfThis.split(" ").reverse().slice(2).join(" - "); //sortam invers si eliminam tag "html" si "body"
 
                 $("#res").html("<strong> " + parray + "</strong>");
 
-
             });
-
-
-
-            //$("*").click(function () {
-                
-            //    var parentEls = $(this).parents().map(function () {
-            //    return this.tagName;
-            //    }).get().join(" - ");
-            //    $("#res").append( "<strong> " + parentEls + "</strong>" + "<br>");
-
-            //});
-           
-               // console.log('clicked', $(this).parent().get(0).tagName);
-            //console.log("x= ");
-
         });
-
-       
 
     </script>
 </body>

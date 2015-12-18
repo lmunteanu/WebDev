@@ -7,8 +7,6 @@
 </head>
 <body>
     
-
-    
     <p id="res"></p>
     <script>
 
@@ -16,19 +14,9 @@
 
             this.name = name;
 
-            this.age = [];
+            this.age = null;
 
-            this.adress = [];
-
-        }
-
-        Person.prototype.haveABaby = function () {
-
-            var newBaby = new Mammal("Baby " + this.name);
-
-            this.offspring.push(newBaby);
-
-            return newBaby;
+            this.adress = "";
 
         }
 
@@ -38,43 +26,77 @@
 
         }
 
-        Student.prototype = new Person();
-        Student.prototype.constructor = Student;
-        function Student() {
-            
-            this.gradeCourseA = 10;
-            this.gradeCourseB = 9;
-            this.gradeCourseC = 8;
-            this.gradeCourseD = 9;
+        function Student(name) {
+            Person.call(this, name);
+            this.gradeCourseA = null;
+            this.gradeCourseB = null;
+            this.gradeCourseC = null;
+            this.gradeCourseD = null;
             this.gradeAverage = function () {
-                return (this.gradeCourseA + this.gradeCourseB) / 2;
+                return (this.gradeCourseA + this.gradeCourseB + this.gradeCourseC + this.gradeCourseD) / 4;
             }
         }
-        Teacher.prototype = new Person();
-        Teacher.prototype.constructor = Teacher;
-        function Teacher(name) {
-            
-            this.speciality = [];
+
+        Student.prototype = Object.create(Person.prototype);
+        Student.prototype.constructor = Student;
+
+        Student.prototype.toString = function () {
+
+            return '[Student "' + this.name + '"]';
+
         }
+
+
+        function Teacher(name, spec) {
+            Person.call(this, name);
+            this.speciality = spec;
+        }
+
+        Teacher.prototype = Object.create(Person.prototype);
+        Teacher.prototype.constructor = Teacher;
+
+        Teacher.prototype.toString = function () {
+
+            return '[Teacher "' + this.name + '"]';
+
+        }
+
         function ClassRoom (name) {
             this.className = name;
             this.teacher = new Teacher();
             this.students = [];
         }
 
-        Student.prototype.toString = function () {
-            return '[Student "' + this.name + '"]';
+        ClassRoom.prototype.toString = function () {
+            return '[ClassRoom "' + this.className + '"] has: ' + this.teacher + "," + this.students.length;
         }
 
-        var student1 = new Student();
+        ClassRoom.prototype.greet = function () {
+            return '[ClassRoom "' + this.className + '"] greets: ' + this.teacher + "," + this.students;
+        }
+
+        var person1 = new Person('Traian')
+        var student1 = new Student('Luci');
         var student2 = new Student('Cristi');
-        var teacher1 = new Teacher('mr Prof');
+        var student3 = new Student('George');
+        var teacher1 = new Teacher('Mr. Prof', 'matematician');
+        var teacher2 = new Teacher('Ms. Profa', 'fizician');
         var clasa1 = new ClassRoom('clasaI');
-        student1.name = 'luci';
-        student2.name = 'cristi';
-        teacher1.name = 'profu';
-        clasa1.students = student1, student2;
+        var clasa2 = new ClassRoom('clasa2');
+        student1.age = 19;
+        student2.age = 21;
+        teacher1.age = 43;
+        student1.gradeCourseA = 10; student1.gradeCourseB = 10; student1.gradeCourseC = 9; student1.gradeCourseD = 7;
         clasa1.teacher = teacher1;
+        clasa1.students.push(student1, student2, student3);
+
+        console.log(clasa1.teacher.toString());
+
+        $('#res').html('howdy ' + clasa1.students + ' wellcome '
+            + clasa1.teacher + ' in this classroom: ' + clasa1.className);
+        $('#res').append('<br>Media studentului: "' + student1.name + '" din clasa: "' + clasa1.className + '" este: ' + student1.gradeAverage());
+
+
     </script>
 </body>
 </html>

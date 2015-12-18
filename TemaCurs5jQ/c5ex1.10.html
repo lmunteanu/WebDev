@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 10 Curs 4</title>
+    <meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <div id="formDiv" class="borders">
+            <form id="frm1" action="">
+                <center>
+                    <p class="desc">Introduceti un numar pentru a calcula suma numerelor de la 1 pana la acel numar:</p>
+                    <TEXTAREA id="valA" COLS="10" ROWS="1" 
+                              style="resize:none" maxlength="6">11</TEXTAREA>
+                    <br>
+                </center>
+            </form>
+        </div>
+        <div id="but" class="borders">
+            <p id="rezultat"></p>
+        </div>
+    </div>
+    <script>
+        
+        $(document).ready(function () {
+            var i = 0;
+
+            $('#valA').keyup(function () {
+                calculeaza();
+            });
+
+            function calculeaza() {
+                var x = $('#valA').val();
+                var result = 0;
+                for (i = 0; i <= x; i++) {
+                    result += i;
+                }
+                $('#rezultat').html("Suma nr. de la 1 la " + x + " este:<br>" + result);
+            }   
+            calculeaza();
+        });
+    </script>
+
+    <div id="center" class="borders"><a href="c5ex1.9.html">&lt;Tema9 </a></div>
+
+</body>
+</html>
