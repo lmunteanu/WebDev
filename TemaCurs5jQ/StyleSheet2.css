@@ -1,0 +1,27 @@
+﻿ html {
+    margin:0px;
+    border: 1px solid red;
+    height:99%;
+    width:99%;
+}
+ body {
+    margin:auto;
+    border: 1px solid green;
+    height:99%;
+    width:99%;
+}
+ /*#bigdiv {
+     margin: auto;
+     height:99%;
+     width:99%;
+     border: 1px solid blue;
+ }*/
+ #moveit {
+     position:absolute;
+     top:100px;
+     left: 100px;
+     height:100px;
+     width: 100px;
+     background: #00ff21;
+     border-radius:50px;
+ }

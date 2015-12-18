@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 1 Curs 5</title>
+    <meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <h1>Rezultate:</h1>
+        <p id="rezultat"></p>
+
+    </div>
+    <script>
+
+        $(document).ready(function(){
+        var a = 16, b = 55 , r;
+        r = (a > b) ? a : b;
+        $('#rezultat').css("color", "white");
+        $('#rezultat').css("background", "black");
+        $('#rezultat').html("Cel mai mare numar intre " + a + " si " + b + " este: ");
+        $('#rezultat').append(r);
+        });
+
+    </script>
+
+    <div id="center"><a href="Tema2.html">Tema2</a></div>
+</body>
+</html>

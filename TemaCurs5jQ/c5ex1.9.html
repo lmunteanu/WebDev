@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 9 Curs 4</title>
+	<meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <div id="formDiv" class="borders">
+            <form id="frm1">
+                <center>                 
+                    <input id="button1" type="button" name="button" value="ChImg">
+                </center>
+            </form>
+        </div>
+        <div id="but" class="borders">
+
+            <p id="rez" class="par">Click "ChImg" pentru a schimba imaginea.</p>
+
+            <img src="a.jpg" alt="image" id="img" />
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+        var i = 0;
+            $('#button1').click(function () {
+                var a = $('#img').attr('src');
+
+                i++
+                $('#rez').html("Butonul a fost apasat de: " + i + " ori.");
+                
+                if (a == "a.jpg") { $('#img').attr('src', 'b.jpg')
+                } else { $('#img').attr('src', 'a.jpg')
+                }
+
+                
+            });
+        });
+    </script>
+
+    <div id="center" class="borders"><a href="Tema8.html">&lt;Tema8 </a><a href="Tema10.html"> Tema10&gt;</a></div>
+    
+</body>
+</html>

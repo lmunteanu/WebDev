@@ -1,0 +1,91 @@
+body {
+    font-family: 'Lucida Console', 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(188, 138, 223);
+}
+a:link{ color: black}
+a:visited{ color: black}
+a:hover{ color: white; font-size:25px; text-decoration:none;}
+#center {
+    position: relative;
+    margin: auto;
+    width: 400px;
+    text-align:center;
+}
+
+#button1:hover {background:#00ff21;}
+
+#button1 {
+    margin-top: 20px;
+    width: 100px;
+    height:100px;
+    color:#000000;
+    background:#b6ff00;
+    border-color:#00ff21;
+    font-family:'Comic Sans MS';
+    font-weight:bold;
+    text-shadow: 1px -2px 3px #ff0000;   
+    border:dashed 1px black;
+    box-shadow: 0px 0px 1px 5px #00ff21; 
+    border-radius:50px;
+}
+#para {
+    background-color: dodgerblue;
+    position: relative;
+    margin: auto;
+    width : 400px;
+    height : 500px;
+    top: 30px;
+    border-radius: 25px;
+    border: 2px dashed white;
+    box-shadow: 0 0 10px 10px dodgerblue;
+}
+h1 {
+    position: relative;
+    top:15px;
+    text-align:center;
+}
+#rezultat {
+    margin : 16px;
+    border : 2px solid white;  
+    position : relative;
+    /*top : 20px;*/
+    padding : 10px;
+    padding-left : 20px;
+    
+}
+#frm1 {
+    padding : 0px;
+}
+#formDiv {
+    position : relative;
+    margin : auto;
+    top: 10px;
+    width : 400px;
+    height : 140px;
+}
+#but {
+    position : relative;
+    top:20px;
+    margin : auto;
+    width : 400px;
+    height : 280px;   
+}
+.borders {
+    border : 0px solid black;
+}
+.par {
+   margin : 0px;
+   text-align : center;
+   color:white;
+}
+.desc {
+   margin : 10px;
+   text-align : center;
+   color:white;
+}
+img {
+    width:200px;
+    height:250px;
+    margin-left: 100px;
+    margin-top:15px;
+}

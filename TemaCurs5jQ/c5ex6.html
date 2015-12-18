@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    
+
+    
+    <p id="res"></p>
+    <script>
+
+        function Person(name) {
+
+            this.name = name;
+
+            this.age = [];
+
+            this.adress = [];
+
+        }
+
+        Person.prototype.haveABaby = function () {
+
+            var newBaby = new Mammal("Baby " + this.name);
+
+            this.offspring.push(newBaby);
+
+            return newBaby;
+
+        }
+
+        Person.prototype.toString = function () {
+
+            return '[Person "' + this.name + '"]';
+
+        }
+
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        function Student() {
+            
+            this.gradeCourseA = 10;
+            this.gradeCourseB = 9;
+            this.gradeCourseC = 8;
+            this.gradeCourseD = 9;
+            this.gradeAverage = function () {
+                return (this.gradeCourseA + this.gradeCourseB) / 2;
+            }
+        }
+        Teacher.prototype = new Person();
+        Teacher.prototype.constructor = Teacher;
+        function Teacher(name) {
+            
+            this.speciality = [];
+        }
+        function ClassRoom (name) {
+            this.className = name;
+            this.teacher = new Teacher();
+            this.students = [];
+        }
+
+        Student.prototype.toString = function () {
+            return '[Student "' + this.name + '"]';
+        }
+
+        var student1 = new Student();
+        var student2 = new Student('Cristi');
+        var teacher1 = new Teacher('mr Prof');
+        var clasa1 = new ClassRoom('clasaI');
+        student1.name = 'luci';
+        student2.name = 'cristi';
+        teacher1.name = 'profu';
+        clasa1.students = student1, student2;
+        clasa1.teacher = teacher1;
+    </script>
+</body>
+</html>

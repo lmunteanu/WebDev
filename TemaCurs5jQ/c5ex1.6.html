@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 6 Curs 4</title>
+	<meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <div id="formDiv" class="borders">
+            <form id="frm1" action="">
+                <center>
+                    <p class="desc">Introduceti text:</p>  
+                    <TEXTAREA id="valA" COLS="40" ROWS="2" style="resize:none" maxlength="70">Introduceti text apoi apasati executa</TEXTAREA>
+                    <br><br>
+                    <input type="button" id="but1" value="Executa">
+                </center>
+            </form>
+        </div>
+        <div id="but" class="borders">
+
+            <p class="par">Click "Executa" pentru a afisa textul.</p>
+
+            <p id="rezultat"></p>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function() {
+        $("#but1").click(function () {
+           var x = $('#valA').val().split(" ");
+           var result = "";
+           for (i = 0; i < x.length; i++) {
+               result += x[i] + "<br />";
+           }
+           $('#rezultat').css("color", "#51ff00");
+           $('#rezultat').css("background", "black");
+           $('#rezultat').html("Rezultat: <br>" + result);
+        });
+
+        $("#valA").click(function () {
+            $('#valA').val("");         //goleste textarea
+        });
+        $("#but1").hover(function () {      //reintroduce text in textarea "on hover"
+            var cv = $('#valA').val();      
+            if (!cv) { $('#valA').val('Introduceti text apoi apasati executa'); }
+        });
+    });
+    </script>
+
+    <div id="center" class="borders"><a href="Tema5.html">&lt;Tema5 </a><a href="Tema7.html"> Tema7&gt;</a></div>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 8 Curs 4</title>
+	<meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <div id="formDiv" class="borders">
+            <form id="frm1">
+                <center>                 
+                    <input id="button1" type="button" name="button" value="BgColor">
+                </center>
+            </form>
+        </div>
+        <div id="but" class="borders">
+
+            <p class="par">Click "BgColor" pentru a schimba culoarea.</p>
+
+            <p id="rezultat"></p>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function() {
+        $('#rezultat').css("color", "#51ff00");
+        //$('#rezultat').css("background", "black");
+
+        $("#button1").click(function () {
+           
+            var color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            
+            var color1 = $('body').css("backgroundColor");
+            var color2 = $('#para').css("backgroundColor");
+            var color3 = $('#but').css("backgroundColor");
+
+            console.log(color, color1, color2, color3);
+ 
+            $('body').css({ "backgroundColor": color });
+            $('#para').css({ "backgroundColor": color1 });
+            $('#but').css({ "backgroundColor": color2 });
+            $('#rezultat').css({ "background": color3 });
+            
+            $('#rezultat').html("Culoare generata: " + color);
+        });
+    });
+    </script>
+
+    <div id="center" class="borders"><a href="Tema7.html">&lt;Tema5 </a><a href="Tema9.html"> Tema9&gt;</a></div>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    
+
+    
+    <p id="res"></p>
+    <script>
+
+        function Mammal(name) {
+
+            this.name = name;
+
+            this.offspring = [];
+
+        }
+
+        Mammal.prototype.haveABaby = function () {
+
+            var newBaby = new Mammal("Baby " + this.name);
+
+            this.offspring.push(newBaby);
+
+            return newBaby;
+
+        }
+
+        Mammal.prototype.toString = function () {
+
+            return '[Mammal "' + this.name + '"]';
+
+        }
+        var luci;
+       
+
+    </script>
+</body>
+</html>

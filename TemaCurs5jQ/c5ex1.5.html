@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 5 Curs 4</title>
+	<meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <div id="formDiv" class="borders">
+            <form id="frm1" action="">
+                <center>
+                    <p class="desc">Introduceti numerele:</p>  
+                    A: <input type="text" id="valA" value="10"><br><br>
+                    B: <input type="text" id="valB" value="2"><br><br>
+                    <input type="button" id="but1" value="Calculeaza">
+                </center>
+            </form>
+        </div>
+        <div id="but" class="borders">
+            <p class="par">Click "Calculeaza" pentru a calcula a/b pentru 
+                            valorile din formular.</p>
+            <p id="rezultat"></p>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function() {
+        
+        $("#but1").click(function () {
+            
+            var a = $('#valA').val();
+            var b = $('#valB').val();
+            console.log(a,b);
+            var c = a / b;
+
+            $('#rezultat').css("color", "#51ff00");
+            $('#rezultat').css("background", "black");
+            
+            $('#rezultat').html("Rezultat: " + a + "/" + b + " = " + c);
+        });
+
+        //alte functii
+        $('#valA').click(function () {
+            $(this).val("");
+        });
+        $('#valB').click(function () {
+            $(this).val("");
+        });
+        $("#but1").hover(function () {
+            var cv1 = $('#valA').val();
+            var cv2 = $('#valB').val();
+            if (!cv1) { $('#valA').val('15'); }
+            if (!cv2) { $('#valB').val('5'); }
+        });
+
+    });
+
+
+    </script>
+
+    <div id="center" class="borders"><a href="Tema4.html">&lt;Tema4 </a><a href="Tema6.html"> Tema6&gt;</a></div>
+    
+</body>
+</html>

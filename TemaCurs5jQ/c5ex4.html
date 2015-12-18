@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    
+        <div>
+
+            <h3>eu sunt un h3</h3>
+
+            <h2>eu sunt un h2</h2>
+
+            <p><b><i>E</i></b>u sunt un paragraf</p>
+
+        </div>
+    
+    <p id="res"></p>
+    <script>
+
+        $(document).ready(function () {
+
+            $("*").click(function (e) {
+                $("#res").html("");
+                e.stopPropagation();
+                var parentOfThis = $(this)[0].tagName + " " + $(this).parents().map(function () {
+                    return this.tagName;
+                }).get().join(" ");
+
+                var parray = parentOfThis.split(" ").reverse().slice(2).join(" - ");
+
+                $("#res").html("<strong> " + parray + "</strong>");
+
+
+            });
+
+
+
+            //$("*").click(function () {
+                
+            //    var parentEls = $(this).parents().map(function () {
+            //    return this.tagName;
+            //    }).get().join(" - ");
+            //    $("#res").append( "<strong> " + parentEls + "</strong>" + "<br>");
+
+            //});
+           
+               // console.log('clicked', $(this).parent().get(0).tagName);
+            //console.log("x= ");
+
+        });
+
+       
+
+    </script>
+</body>
+</html>

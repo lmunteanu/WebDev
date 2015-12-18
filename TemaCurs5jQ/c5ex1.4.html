@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 4 Curs 4</title>
+    <meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <h1>Rezultate:</h1>
+        <p id="rezultat"></p>
+        <center><button id="but1">Alert</button></center>
+    </div>
+
+    <script>
+        var d = new Date();
+        var theDay = d.getDay();
+        var theHour = d.getHours();
+        var theMinute = d.getMinutes();
+        var theSec = d.getSeconds();
+        var theMSec = d.getMilliseconds();
+
+        switch (theDay) {
+            case 1:
+                theDay = "Monday";
+                break;
+            case 2:
+                theDay = "Tuesday";
+                break;
+            case 3:
+                theDay = "Wednesday";
+                break;
+            case 4:
+                theDay = "Thursday";
+                break;
+            case 5:
+                theDay = "Friday ";
+                break;
+            case 6:
+                theDay = "Saturday";
+                break;
+            case 0:
+                theDay = "Sunday";
+                break;
+            default:
+                theDay = "unknown DAY!"
+        }
+
+        var msg = "Ziua: " + theDay + "\n\n";
+        msg += "Time: " + theHour + ":" + theMinute
+                    + ":" + theSec + "." + theMSec + "\n";
+
+        $('#but1').click(function () { alert(msg); });
+
+        $('#rezultat').css("color", "#51ff00");
+        $('#rezultat').css("background", "black");
+
+    </script>
+    <div id="center" class="borders"><a href="Tema3.html">&lt;Tema3 </a><a href="Tema5.html"> Tema5&gt;</a></div>
+</body>
+</html>

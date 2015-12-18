@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tema 2 Curs 5</title>
+    <meta charset="utf-8" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <div id="para" class="borders">
+        <h1>Rezultate:</h1>
+        <p id="rezultat"></p>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var arOfNum = [10, 42, 22];
+            var r = Math.max.apply(null, arOfNum);
+            $('#rezultat').html(r);
+            $('#rezultat').css("color", "#51ff00");
+            $('#rezultat').css("background", "black");
+        });
+    </script>
+    <div id="center" class="borders"><a href="Tema1.html">&lt;Tema1 </a><a href="Tema3.html"> Tema3&gt;</a></div>
+</body>
+</html>
