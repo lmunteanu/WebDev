@@ -8,25 +8,20 @@
         switch (event.keyCode) {
             case 38:        //sageata sus
                 //moveup('"top": "-=5px"');         //
-                moveup();
+                moveup('sus');
                 break;
             case 39:        //sageata dreapta
-                
-                $('#moveit').stop();
-                $('#moveit').animate({ "left": "+=5px" },150);
+                $('#moveit').css({ "left": "+=5px" });
                 break;
-            case 40:        //sageata jos
-                
+            case 40:        //sageata jos     
                 $('#moveit').stop();
                 $('#moveit').animate({ "top": "+=5px" },0);
                 break;
             case 37:        //sageata stanga
-
                 $('#moveit').stop();
                 $('#moveit').animate({ "left": "-=5px" }, 50);
                 break;
             case 32:        //tasta space
-
                 $('#moveit').toggle();
                 break;
             default:
@@ -35,6 +30,7 @@
     });
 });
 function moveup(direction) {
+    console.log(direction);
     for (var i = 0; i < 3; i++) {
         $('#moveit').stop();
         $('#moveit').animate({ "top": "-=5px" }, 200);   

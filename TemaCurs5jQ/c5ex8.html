@@ -4,25 +4,35 @@
     <title></title>
 	<meta charset="utf-8" />
     <script src="jquery-2.1.4.js"></script>
+    <link href="StyleSheet2.css" rel="stylesheet" />
 </head>
 <body>
 
     <script>
-    $(document).ready(function() {
-        var unitSize = 10; // width (and height) of one square
-        var unitsWide = 60; // number of squares along x-axis
-        var unitsTall = 30; // number of squares along y-axis
-        var drawing = $('<div class="drawing"></div>').css({
-                        overflow: 'hidden',
-                        border: '0px solid #ffffff',
-                        width: (unitSize * unitsWide)
-                        
-        });
+
+    $(document).ready(function () {
+
+    var wid = $('body').width();
+    var hei = $('body').height();
+
+    console.log('measured', wid, "*", hei);
+
+    var unitSize = 10; // width (and height) of one square
+    var unitsWide = wid/unitSize; // number of squares along x-axis
+    var unitsTall = hei/unitSize; // number of squares along y-axis
+
+    console.log('drawing units of size' + unitSize + 'of' + unitsWide + 'of' + unitsTall)
+
+    var drawing = $('<div class="drawing"></div>').css({
+                    overflow: 'hidden',
+                    border: '1px solid #ffffff',
+                    width: (unitSize * unitsWide)   
+    });
         
     for (var i = 0; i < ((unitsWide * unitsTall) - 0); i++) {
         var mColor = '#FFFFFF';
 
-        $('<div class="square"></div>').css({
+        $('<div class=""></div>').css({
                 border: '0px solid #c0c0c0',
                 display: 'block',
                 float: 'left',
@@ -32,33 +42,32 @@
         }).appendTo(drawing);
     }
     drawing.appendTo($("body"));
-
-    $('.square').hover(function () {
+    var i = 0;
+    $('div').mouseenter(function () {
+        i++; //how many changes ocur change to rosu-verde-albastru-negru
+        console.log(i ,'on click', $(this).css('background-color'));
         switch ($(this).css('background-color')) {
-            case 'rgb(255, 255, 255)':
+            case 'rgb(255, 255, 255)':  //case white
                 $(this).css({ 'background-color': '#FF0000' });
-                console.log('setez rosu!', $(this).css('background-color'));
+                console.log(i,'set background red!', $(this).css('background-color'));
                 break;
             case 'rgb(255, 0, 0)':
                 $(this).css({ 'background-color': '#00FF00' });
-                console.log('setez verde!', $(this).css('background-color'));
+                console.log(i,'set background green!', $(this).css('background-color'));
                 break;
             case 'rgb(0, 255, 0)':
                 $(this).css({ 'background-color': '#0000FF' });
-                console.log('setez albastru!', $(this).css('background-color'));
+                console.log(i,'set background blue!', $(this).css('background-color'));
                 break;
             //case 'rgb(0, 0, 255)':
             //    $(this).css({ 'background-color': '#FFFFFF' });
-            //    console.log('setez albastru!', $(this).css('background-color'));
+            //    console.log('reset color!', $(this).css('background-color'));
             //    break;
             default:
-                console.log('default', $(this).css('background-color'));
+                console.log(i,'default switch - background remains unchanged');
         }
-        console.log("click");
-        var RandomColor = '#ffffff';
-        //var cv = $('#valA').val();
-        //if (!cv) { $('#valA').val('Introduceti text apoi apasati executa'); }
-       // $(this).css({ 'background-color': '#c0c0c0' });
+        console.log(i,'background after click', $(this).css('background-color'));
+       
     });
 
     });
