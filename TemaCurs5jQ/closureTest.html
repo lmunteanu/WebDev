@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.1.4.js"></script>
+</head>
+<body>
+    <p id="res"></p>
+    <script>
+
+        function init(a, b) {
+            var nr1 = a;
+            var nr2 = b;
+            function aduna() {
+                var c = a + b;
+                $('#res').html(c);
+            }
+            aduna();
+        }
+        init(5, 2);
+
+    </script>
+</body>
+</html>

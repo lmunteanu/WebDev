@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>c5ex6</title>
 	<meta charset="utf-8" />
     <script src="jquery-2.1.4.js"></script>
 </head>
@@ -9,15 +9,17 @@
     
     <p id="res"></p>
     <script>
-
-        function Person(name) {
+        var personsCreated = 0;
+        var studentsCreated = 0;
+        var teachersCreated = 0;
+        var classesCreated = 0;
+        
+        function Person(name, age) {
 
             this.name = name;
-
-            this.age = null;
-
-            this.adress = "";
-
+            this.age = age || 'secret';
+            this.adress = "secret";
+            this.pId = personsCreated++;
         }
 
         Person.prototype.toString = function () {
@@ -25,19 +27,24 @@
             return '[Person "' + this.name + '"]';
 
         }
-
-        function Student(name) {
-            Person.call(this, name);
-            this.gradeCourseA = null;
-            this.gradeCourseB = null;
-            this.gradeCourseC = null;
-            this.gradeCourseD = null;
-            this.gradeAverage = function () {
-                return (this.gradeCourseA + this.gradeCourseB + this.gradeCourseC + this.gradeCourseD) / 4;
+        
+        function Student(name, age, gradeCourseA, gradeCourseB, gradeCourseC, gradeCourseD ) {
+            Person.call(this, name, age);
+            this.gradeCourseA = gradeCourseA;
+            this.gradeCourseB = gradeCourseB;
+            this.gradeCourseC = gradeCourseC;
+            this.gradeCourseD = gradeCourseD;
+            this.sId = studentsCreated++;
+            this.gradeAverage = function () { 
+                if ((this.gradeCourseA) && (this.gradeCourseB) && (this.gradeCourseC) && (this.gradeCourseD)) { 
+                    return (this.gradeCourseA + this.gradeCourseB + this.gradeCourseC + this.gradeCourseD) / 4;
+                } else {
+                    return (" The student has not enough grades")
+                }
             }
         }
 
-        Student.prototype = Object.create(Person.prototype);
+        Student.prototype = new Person();
         Student.prototype.constructor = Student;
 
         Student.prototype.toString = function () {
@@ -46,13 +53,14 @@
 
         }
 
-
+        
         function Teacher(name, spec) {
             Person.call(this, name);
             this.speciality = spec;
+            this.tId = teachersCreated++;
         }
 
-        Teacher.prototype = Object.create(Person.prototype);
+        Teacher.prototype = new Person();
         Teacher.prototype.constructor = Teacher;
 
         Teacher.prototype.toString = function () {
@@ -60,41 +68,50 @@
             return '[Teacher "' + this.name + '"]';
 
         }
-
+        
         function ClassRoom (name) {
             this.className = name;
-            this.teacher = new Teacher();
+            this.teacher = [];
             this.students = [];
+            this.cId = classesCreated++;
         }
 
         ClassRoom.prototype.toString = function () {
-            return '[ClassRoom "' + this.className + '"] has: ' + this.teacher + "," + this.students.length;
+            return '[ClassRoom "' + this.className + '"] has: ' + this.teacher + " and " + this.students.length + " students.";
         }
 
         ClassRoom.prototype.greet = function () {
             return '[ClassRoom "' + this.className + '"] greets: ' + this.teacher + "," + this.students;
         }
 
-        var person1 = new Person('Traian')
+        var student0 = new Student('Johny', 19, 10, 9, 9, 5);
+        var person1 = new Person('Traian');
+        var person2 = new Person('Giani', 99);
         var student1 = new Student('Luci');
-        var student2 = new Student('Cristi');
+        var student2 = new Student('Cristi', null, null, 9, 3);
         var student3 = new Student('George');
         var teacher1 = new Teacher('Mr. Prof', 'matematician');
         var teacher2 = new Teacher('Ms. Profa', 'fizician');
         var clasa1 = new ClassRoom('clasaI');
         var clasa2 = new ClassRoom('clasa2');
         student1.age = 19;
-        student2.age = 21;
+        //student2.age = 21;
         teacher1.age = 43;
-        student1.gradeCourseA = 10; student1.gradeCourseB = 10; student1.gradeCourseC = 9; student1.gradeCourseD = 7;
+        student1.gradeCourseA = 10; student1.gradeCourseB = 10; student1.gradeCourseC = 9; student1.gradeCourseD = 7; student1.adress = 'Oradea, str. Nufarului';
         clasa1.teacher = teacher1;
         clasa1.students.push(student1, student2, student3);
+        clasa2.students.push(student0);
+        clasa2.teacher = teacher2;
 
         console.log(clasa1.teacher.toString());
 
-        $('#res').html('howdy ' + clasa1.students + ' wellcome '
+        $('p').css({ 'color': '#0000FF' });
+
+        $('#res').html('Howdy ' + clasa1.students + ' wellcome '
             + clasa1.teacher + ' in this classroom: ' + clasa1.className);
-        $('#res').append('<br>Media studentului: "' + student1.name + '" din clasa: "' + clasa1.className + '" este: ' + student1.gradeAverage());
+
+        $('#res').append('<br><br>Media studentului: "' + student1.name +
+            '" din clasa: "' + clasa1.className + '" este: ' + student1.gradeAverage());
 
 
     </script>
