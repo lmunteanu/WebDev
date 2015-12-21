@@ -14,28 +14,36 @@
         var teachersCreated = 0;
         var classesCreated = 0;
         
+        //begin person
         function Person(name, age) {
             this.name = name;
             this.age = age || 'secret';
             this.adress = "secret";
-            if (name) this.pId = personsCreated++; 
+            if (name) this.pId = personsCreated++; //other then students and teachers
         }
+
         Person.prototype.toString = function () {
             return '[Person "' + this.name + '"]';
         }
         Person.prototype.ImWhat = function () {
-            return 'Hi, my name is ' + this.name + ' and i am also a person!';
-        }
+            if ((this.constructor.name == "Student") || (this.constructor.name == "Teacher")) {
+                return 'Hi, my name is ' + this.name + ", I'm a " + this.constructor.name + " but i'm also a person!";
+            }  else {
+                    return "Hi, my name is " + this.name + " and i'm only a person!";
+                }
+            } 
+          
+           
+        
         //end person
 
         //begin student
         function Student(name, age, grades) {
-            grades = [];
             Person.call(this, name, age);
-            this.gradeCourseA = grades[0];
-            this.gradeCourseB = grades[1];
-            this.gradeCourseC = grades[2];
-            this.gradeCourseD = grades[3];
+            this.gradeCourseA = arguments[2];
+            this.gradeCourseB = arguments[3];
+            this.gradeCourseC = arguments[4];
+            this.gradeCourseD = arguments[5];
             this.sId = studentsCreated++;
         }
 
@@ -57,7 +65,6 @@
 
         //begin teacher
         function Teacher(name, spec) {
-            
             Person.call(this, name);
             this.speciality = spec;
             this.tId = teachersCreated++;
@@ -82,45 +89,58 @@
         }
 
         ClassRoom.prototype.toString = function () {
-            return '[ClassRoom "' + this.className + '"] has: ' + this.teacher + " and " + this.students.length + " students.";
+            return '[ClassRoom "' + this.className + '"] has: ' + this.teacher +
+                " and " + this.students.length + " students.";
         }
 
         ClassRoom.prototype.greet = function () {
             return '[ClassRoom "' + this.className + '"] greets: ' + this.teacher + "," + this.students;
         }
 
+        // end classroom
         
-        var person1 = new Person('Traian');
-        var person2 = new Person('Giani', 99);
-        var student0 = new Student('Johny',
-                                    19,
-                                    [10, 9, 9, 5]
-                                    );
-        var student1 = new Student('Luci');
-        var student2 = new Student('Cristi');
-        var student3 = new Student('George');
-        var teacher1 = new Teacher('Mr. Prof', 'matematician');
-        var teacher2 = new Teacher('Ms. Profa', 'fizician');
-        var clasa1 = new ClassRoom('clasaI');
-        var clasa2 = new ClassRoom('clasa2');
-        student1.age = 19;
-        student2.age = 21;
-        teacher1.age = 43;
-        student1.gradeCourseA = 10; student1.gradeCourseB = 10; student1.gradeCourseC = 9; student1.gradeCourseD = 7; student1.adress = 'Oradea, str. Nufarului';
-        clasa1.teacher = teacher1;
-        clasa1.students.push(student1, student2, student3);
-        clasa2.students.push(student0);
-        clasa2.teacher = teacher2;
 
-        console.log(clasa1.teacher.toString());
+            var person1 = new Person('Traian');
+            var person2 = new Person('Giani', 99);
+            var student0 = new Student('Johny', 19, 10, 9, 9, 5);
+            var student1 = new Student('Luci', null, 10, 9, 8, 7);
+            student1.adress = 'Oradea, str. Nufarului';
+            var student2 = new Student('Cristi', 21, 7, 10, 9, 4);
+            var student3 = new Student('George');
+            var teacher1 = new Teacher('Mr. Prof', 'matematician');
+            teacher1.age = 43;
+            var teacher2 = new Teacher('Ms. Profa', 'fizician');
+            var clasa1 = new ClassRoom('clasaI');
+            var clasa2 = new ClassRoom('clasa2');
+            
+            clasa1.teacher = teacher1;
+            clasa1.students.push(student1, student2, student3);
+            clasa2.students.push(student0);
+            clasa2.teacher = teacher2;
+        
+        
+       
+            var clicked = 1;
+            $('*').click(function () {
+                if (clicked == 1) {
+                    clicked = 0
+                } else {
+                    clicked = 1
+                }
+                console.log('clicked' + clicked);
+            $('p').css({ 'color': '#0000FF' });
 
-        $('p').css({ 'color': '#0000FF' });
+            $('#res').html('Howdy ' + clasa1.students + ' wellcome '
+                + clasa1.teacher + ' in this classroom: ' + clasa1.className);
 
-        $('#res').html('Howdy ' + clasa1.students + ' wellcome '
-            + clasa1.teacher + ' in this classroom: ' + clasa1.className);
+            $('#res').append('<br><br>Media studentului: "' + student1.name +
+                '" din clasa: "' + clasa1.className + '" este: ' + student1.gradeAverage());
+        });
 
-        $('#res').append('<br><br>Media studentului: "' + student1.name +
-            '" din clasa: "' + clasa1.className + '" este: ' + student1.gradeAverage());
+
+       // console.log(clasa1.toString());
+
+        
 
 
     </script>

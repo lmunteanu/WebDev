@@ -18,6 +18,8 @@
 
             this.offspring = [];
 
+            this.babyNr = 0;
+
             this.wasHappy = 0;
             
             this.mId = ++mammalsCreated;
@@ -26,23 +28,20 @@
 
         // original haveABaby
         //Mammal.prototype.haveABaby = function () {
-            
         //    var newBaby = new Mammal("Baby " + this.name);
-
         //    this.offspring.push(newBaby);
-
         //    return newBaby;
-
         //}
-
         // upgraded haveABaby
+
 
         Mammal.prototype.haveABaby =  (function () {
                 var counter = 0;
                 return function () {
                     var newBaby = new Mammal("Baby " + this.name);
                     this.offspring.push(newBaby);
-                    return this.name + "'s new Baby: " + newBaby + " was created. Now there are " + (counter += 1) + " babies";
+                    this.babyNr++;
+                    return this.name + "'s " + newBaby + " of " + (counter += 1) + " created babies";
                 }
             })();
 
@@ -50,7 +49,7 @@
 
         Mammal.prototype.toString = function () {
 
-            return '[Mammal "' + this.name + '"]';
+            return '[Mammalaaa "' + this.name + '"]';
 
         }
 
@@ -63,8 +62,8 @@
         }
 
         
-        var mamal1 = new Mammal("Maria");
-        var mamal2 = new Mammal("Ioana");
+        var mamal1 = new Mammal("cici");
+        var mamal2 = new Mammal("igor");
        
 
     </script>
