@@ -15,46 +15,49 @@
         var classesCreated = 0;
         
         function Person(name, age) {
-
             this.name = name;
             this.age = age || 'secret';
             this.adress = "secret";
-            this.pId = personsCreated++;
+            if (name) this.pId = personsCreated++; 
         }
-
         Person.prototype.toString = function () {
-
             return '[Person "' + this.name + '"]';
-
         }
-        
-        function Student(name, age, gradeCourseA, gradeCourseB, gradeCourseC, gradeCourseD ) {
+        Person.prototype.ImWhat = function () {
+            return 'Hi, my name is ' + this.name + ' and i am also a person!';
+        }
+        //end person
+
+        //begin student
+        function Student(name, age, grades) {
+            grades = [];
             Person.call(this, name, age);
-            this.gradeCourseA = gradeCourseA;
-            this.gradeCourseB = gradeCourseB;
-            this.gradeCourseC = gradeCourseC;
-            this.gradeCourseD = gradeCourseD;
+            this.gradeCourseA = grades[0];
+            this.gradeCourseB = grades[1];
+            this.gradeCourseC = grades[2];
+            this.gradeCourseD = grades[3];
             this.sId = studentsCreated++;
-            this.gradeAverage = function () { 
-                if ((this.gradeCourseA) && (this.gradeCourseB) && (this.gradeCourseC) && (this.gradeCourseD)) { 
-                    return (this.gradeCourseA + this.gradeCourseB + this.gradeCourseC + this.gradeCourseD) / 4;
-                } else {
-                    return (" The student has not enough grades")
-                }
-            }
         }
 
         Student.prototype = new Person();
         Student.prototype.constructor = Student;
 
         Student.prototype.toString = function () {
-
             return '[Student "' + this.name + '"]';
-
         }
+        Student.prototype.gradeAverage = function () {
+            if ((this.gradeCourseA) && (this.gradeCourseB) && (this.gradeCourseC) && (this.gradeCourseD)) {
+                return ((this.gradeCourseA + this.gradeCourseB + this.gradeCourseC + this.gradeCourseD) / 4);
+            } else {
+                return (this.name + " has not enough grades");
+            } 
+        }
+       
+        //end student
 
-        
+        //begin teacher
         function Teacher(name, spec) {
+            
             Person.call(this, name);
             this.speciality = spec;
             this.tId = teachersCreated++;
@@ -68,7 +71,9 @@
             return '[Teacher "' + this.name + '"]';
 
         }
-        
+        // end Teacher 
+
+        // begin classroom
         function ClassRoom (name) {
             this.className = name;
             this.teacher = [];
@@ -84,18 +89,22 @@
             return '[ClassRoom "' + this.className + '"] greets: ' + this.teacher + "," + this.students;
         }
 
-        var student0 = new Student('Johny', 19, 10, 9, 9, 5);
+        
         var person1 = new Person('Traian');
         var person2 = new Person('Giani', 99);
+        var student0 = new Student('Johny',
+                                    19,
+                                    [10, 9, 9, 5]
+                                    );
         var student1 = new Student('Luci');
-        var student2 = new Student('Cristi', null, null, 9, 3);
+        var student2 = new Student('Cristi');
         var student3 = new Student('George');
         var teacher1 = new Teacher('Mr. Prof', 'matematician');
         var teacher2 = new Teacher('Ms. Profa', 'fizician');
         var clasa1 = new ClassRoom('clasaI');
         var clasa2 = new ClassRoom('clasa2');
         student1.age = 19;
-        //student2.age = 21;
+        student2.age = 21;
         teacher1.age = 43;
         student1.gradeCourseA = 10; student1.gradeCourseB = 10; student1.gradeCourseC = 9; student1.gradeCourseD = 7; student1.adress = 'Oradea, str. Nufarului';
         clasa1.teacher = teacher1;

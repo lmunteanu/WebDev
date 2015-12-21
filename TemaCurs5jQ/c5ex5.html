@@ -20,8 +20,13 @@
 
         }
 
-        Mammal.prototype.haveABaby = function () {
+        //var add = (function () {
+        //    var counter = 0;
+        //    return function () {return counter += 1;}
+        //})();
 
+        Mammal.prototype.haveABaby = function () {
+            
             var newBaby = new Mammal("Baby " + this.name);
 
             this.offspring.push(newBaby);
@@ -30,12 +35,32 @@
 
         }
 
+
+        //Mammal.prototype.haveABaby = (function () {
+
+        //    //var newBaby = new Mammal("Baby " + this.name);
+
+        //    //(function () {
+        //        var counter = 0;
+        //        var newBaby = new Mammal("Baby " + this.name);
+        //        this.offspring.push(newBaby);
+        //        return function () { return counter += 1; }
+        //    })();
+
+        //    // this.offspring.push(newBaby);
+
+        //    // return newBaby;
+
+        
+
         Mammal.prototype.toString = function () {
 
             return '[Mammal "' + this.name + '"]';
 
         }
-        var luci;
+        
+        var mamal1 = new Mammal("cici");
+        var mamal2 = new Mammal("igor");
        
 
     </script>
